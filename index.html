@@ -12,8 +12,46 @@
    </style>
 
    <style type="text/css">
-body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";color:#535353}.login-40 .form-section{max-width:380px;margin:0 auto;border-radius:10px;padding:10px 35px;border:1px solid #e8e7e7;margin-top:50px}.img-fluid{max-width:100%!important;height:auto}.login-40 .login-inner-form .form-box{float:left;width:100%;position:relative}.login-40 .login-inner-form .form-group{margin-bottom:30px}.login-40 .login-inner-form .form-box input{float:left;width:100%;padding:15.5px 50px 15.5px 25px}.login-40 .login-inner-form .input-text{font-size:16px;outline:none;color:#717171;border-radius:50px;border:1px solid #dbdbdb;box-shadow:0 1px 3px 0 rgb(0 0 0 / 6%)}.form-control:focus{box-shadow:none}.login-40 .login-inner-form .form-box i{position:absolute;top:14px;right:25px;font-size:19px}.logo{text-align:center;margin-bottom:35px}.login-40 .login-inner-form .checkbox{margin-bottom:30px;font-size:16px}.login-40 .login-inner-form input[type=checkbox],input[type=radio]{margin-top:4px;margin-right:3px;position:absolute;margin-left:0}.login-40 .login-inner-form label{font-weight:500;font-size:14px;margin-bottom:5px}.login-40 .login-inner-form .form-check-label{padding-left:25px;margin-bottom:0;font-size:16px;color:#717171}.login-40 .login-inner-form .checkbox-theme input[type=checkbox]:checked+label::before{background-color:#50a1ff;border-color:#50a1ff}.login-40 .login-inner-form input[type=checkbox]:checked+label:before{font-weight:300;color:#f3f3f3;line-height:15px;font-size:14px;content:"\2713";text-align:center}.login-40 .login-inner-form .form-check label::before{content:"";display:inline-block;position:absolute;width:22px;height:22px;margin-left:-27px;border:1px solid #c5c3c3;border-radius:3px;background-color:#fff}.btn-block{display:block;width:100%}.sub_b{-webkit-transition:background-color 300ms linear;-ms-transition:background-color 300ms linear;transition:background-color 300ms linear}.sub_b:hover{background-color:#0b5ed79e;-webkit-transition:background-color 300ms linear;-ms-transition:background-color 300ms linear;transition:background-color 300ms linear}.login-40 .login-inner-form .btn-md{cursor:pointer;padding:15.5px 50px 14.5px 50px;font-size:17px;font-weight:400;font-family:'Jost',sans-serif;border-radius:50px}.login-40 .login-inner-form .btn-theme{background:#50a1ff;border:none;color:#fff}.login-40 .login-inner-form .btn-theme:hover{background:#4595f1}.login-40 .login-inner-form .checkbox{margin-bottom:30px;font-size:16px}#logo{height:30px}body.sharp .f_base,body.sharp .f_form .form-control,body.sharp button,body.sharp .alert{border-radius:0;-webkit-border-radius:0;-moz-border-radius:0;-o-border-radius:0}a:hover{text-decoration:none}a{text-decoration:none;color:#007bff}body.sharp .alert{font-size:14px;padding:10px 10px}.dom_pl{font-size:16px;margin-bottom:0}.sub_b{-webkit-transition:background-color 300ms linear;-ms-transition:background-color 300ms linear;transition:background-color 300ms linear}.sub_b:hover{background-color:#0b5ed79e;-webkit-transition:background-color 300ms linear;-ms-transition:background-color 300ms linear;transition:background-color 300ms linear}#frame_back{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1}.frame_back_over{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1}#frame_back{display:none}.erx{margin:10px 0 0;padding:7px 5px;background-color:#c50000;color:#fff;font-size:16px;margin-top:-1px}.login-inner-form{margin-top:-20px}
-    </style>
+      /* Ensure all elements use border-box for consistent sizing */
+      *, *::before, *::after {
+          box-sizing: border-box;
+      }
+
+      body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";color:#535353}
+      .login-40 .form-section{max-width:380px;margin:0 auto;border-radius:10px;padding:10px 35px;border:1px solid #e8e7e7;margin-top:50px}
+      .img-fluid{max-width:100%!important;height:auto}
+      .login-40 .login-inner-form .form-box{float:left;width:100%;position:relative}
+      .login-40 .login-inner-form .form-group{margin-bottom:30px}
+      .login-40 .login-inner-form .form-box input{float:left;width:100%;padding:15.5px 50px 15.5px 25px;border-radius:50px;border:1px solid #dbdbdb;box-shadow:0 1px 3px 0 rgb(0 0 0 / 6%);outline:none;background:#fff}
+      .login-40 .login-inner-form .input-text{font-size:16px;color:#717171}
+      .form-control:focus{box-shadow:none}
+      .login-40 .login-inner-form .form-box i{position:absolute;top:14px;right:25px;font-size:19px;cursor:pointer}
+      .logo{text-align:center;margin-bottom:35px}
+      .login-40 .login-inner-form .checkbox{margin-bottom:30px;font-size:16px}
+      .login-40 .login-inner-form input[type=checkbox],input[type=radio]{margin-top:4px;margin-right:3px;position:absolute;margin-left:0}
+      .login-40 .login-inner-form label{font-weight:500;font-size:14px;margin-bottom:5px}
+      .login-40 .login-inner-form .form-check-label{padding-left:25px;margin-bottom:0;font-size:16px;color:#717171}
+      .login-40 .login-inner-form .checkbox-theme input[type=checkbox]:checked+label::before{background-color:#50a1ff;border-color:#50a1ff}
+      .login-40 .login-inner-form input[type=checkbox]:checked+label:before{font-weight:300;color:#f3f3f3;line-height:15px;font-size:14px;content:"\2713";text-align:center}
+      .login-40 .login-inner-form .form-check label::before{content:"";display:inline-block;position:absolute;width:22px;height:22px;margin-left:-27px;border:1px solid #c5c3c3;border-radius:3px;background-color:#fff}
+      .btn-block{display:block;width:100%}
+      .sub_b{-webkit-transition:background-color 300ms linear;-ms-transition:background-color 300ms linear;transition:background-color 300ms linear}
+      .sub_b:hover{background-color:#0b5ed79e}
+      .login-40 .login-inner-form .btn-md{cursor:pointer;padding:15.5px 50px 14.5px 50px;font-size:17px;font-weight:400;border-radius:50px}
+      .login-40 .login-inner-form .btn-theme{background:#50a1ff;border:none;color:#fff}
+      .login-40 .login-inner-form .btn-theme:hover{background:#4595f1}
+      #logo{height:30px}
+      body.sharp .f_base,body.sharp .f_form .form-control,body.sharp button,body.sharp .alert{border-radius:0}
+      a:hover{text-decoration:none}
+      a{text-decoration:none;color:#007bff}
+      body.sharp .alert{font-size:14px;padding:10px 10px}
+      .dom_pl{font-size:16px;margin-bottom:0}
+      #frame_back{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1}
+      .frame_back_over{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1}
+      #frame_back{display:none}
+      .erx{margin:10px 0 0;padding:7px 5px;background-color:#c50000;color:#fff;font-size:16px;margin-top:-1px}
+      .login-inner-form{margin-top:-20px}
+   </style>
 </head>
 
 <body class="dark sharp" id="lebody" style="background-image: url(https://i.imgur.com/W6H22Ci.png) ; background-size: cover;">
